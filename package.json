@@ -9,16 +9,16 @@
   "dependencies": {
     "express": "*",
     "body-parser": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "cors": "^2.8.3",
+    "method-override": "^2.3.8",
+    "morgan": "^1.8.1"
   },
   "author": "Julio Cesar Fausto",
   "license": "ISC",
   "devDependencies": {
     "chai": "^3.5.0",
-    "cors": "^2.8.3",
-    "method-override": "^2.3.8",
     "mocha": "^3.3.0",
-    "morgan": "^1.8.1",
     "sinon": "^2.2.0",
     "sinon-mongoose": "^2.0.1"
   }
