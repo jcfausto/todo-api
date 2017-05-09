@@ -33,5 +33,7 @@ app.get('/api/members/:user_id', function(req, res){
   })
 });
 
-app.listen(3000);
-console.log('Running on port 3000');
+app.listen(config.port, function(err){
+    if (err) throw err;
+    console.log('Running on port ' + config.port);
+});
