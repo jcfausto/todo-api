@@ -11,10 +11,10 @@ mongoose.connect('mongodb://localhost/tododb');
 var db = mongoose.connection;
 
 app.get('/', function(req, res){
-  res.send('Please use /api/list');
+  res.send('Please use /api/members/:member_id');
 });
 
-app.get('/api/list/:user_id', function(req, res){
+app.get('/api/members/:user_id', function(req, res){
   User.getTodoList(req.params['user_id'], function(err, users){
     if (err) {
       res.send('Nothing found!');
