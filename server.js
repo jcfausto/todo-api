@@ -16,7 +16,10 @@ app.use(bodyParser.json({type: 'application/vnd.api+json'})); //parse applicatio
 User = require('./app/models/user');
 
 //Connect to mongoose
-mongoose.connect('mongodb://localhost/tododb');
+mongoose.connect(config.db);
+mongoose.connection.on('connected', function() {
+  console.log('Mongoose connected to ' + config.db);
+});
 var db = mongoose.connection;
 
 app.get('/', function(req, res){
