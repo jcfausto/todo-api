@@ -2,9 +2,12 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var morgan = require('morgan');
+var methodOverride = require('method-override');
+var config = require('./app/config/config');
 
 //Requring user model
-User = require('./models/user');
+User = require('./app/models/user');
 
 //Connect to mongoose
 mongoose.connect('mongodb://localhost/tododb');
