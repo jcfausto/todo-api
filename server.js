@@ -1,10 +1,19 @@
 var express = require('express');
-var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var morgan = require('morgan');
 var methodOverride = require('method-override');
 var config = require('./app/config/config');
+
+//Test related dependencies
+var sinon = require('sinon');
+var chai = require('chai');
+var expect = chai.expect;
+require('sinon-mongoose');
+
+//Express instance creation
+var app = express();
+
 
 //Configuring express middleware
 app.use(morgan('dev')); //Log requests to console
