@@ -14,12 +14,15 @@ require('sinon-mongoose');
 //Express instance creation
 var app = express();
 
+//Requiring routes
+require('./app/router/router')(app);
 
 //Configuring express middleware
 app.use(morgan('dev')); //Log requests to console
 app.use(bodyParser.urlencoded({'extended':'true'})); //parse application/x-www-form-urlencoded
 app.use(bodyParser.json()); // parse application/json
 app.use(bodyParser.json({type: 'application/vnd.api+json'})); //parse application/vnd.api+json as json
+app.use(methodOverride());
 
 //Requring user model
 User = require('./app/models/user');
@@ -31,21 +34,10 @@ mongoose.connection.on('connected', function() {
 });
 var db = mongoose.connection;
 
-app.get('/', function(req, res){
-  res.send('Please use /api/members/:member_id');
-});
-
-app.get('/api/members/:user_id', function(req, res){
-  User.getTodoList(req.params['user_id'], function(err, users){
-    if (err) {
-      res.send('Nothing found!');
-      //throw err;
-    }
-    res.json(users);
-  })
-});
-
 app.listen(config.port, function(err){
     if (err) throw err;
     console.log('Running on port ' + config.port);
 });
+
+//Exporting app to be used anywere
+module.exports = app;
